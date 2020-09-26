@@ -1,0 +1,112 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card card-profile">
+                    <div class="card-avatar">
+                      <a href="javascript:void(0)">
+                        <img class="img" [src]="foto" />
+                      </a>
+                    </div>
+                    <div class="card-body">
+                        <app-erros [erros]="errosForm"></app-erros>
+                        <form  [formGroup]="form">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Nome" class="form-control" formControlName="nome">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Sobrenome" class="form-control" formControlName="sobrenome">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Email" type="email" class="form-control" formControlName="email">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                  <mat-form-field class="example-full-width">
+                                    <input mask="CPF_CNPJ" placeholder="CPF/CNPJ" type="text" class="form-control" formControlName="cpfcnpj">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Senha" type="password" class="form-control" formControlName="password">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Confirme a senha" type="password" class="form-control" formControlName="password_confirmation">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                      <input accept='image/*' type='file' placeholder="Imagem" class="form-control" (change)="readURL($event);" />
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                           
+                            <button (click)="save()" mat-raised-button type="submit" class="btn btn-danger pull-right">Cadastrar</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        ID
+                                    </th>
+                                    <th>
+                                        Nome
+                                    </th>
+                                    <th>
+                                        CPF/CNPJ
+                                    </th>
+                                    <th>
+                                        Email
+                                    </th>
+                                    <th>
+                                        Perfil
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let obj of data">
+                                        <td>
+                                            {{obj.id}}
+                                        </td>
+                                        <td>
+                                            {{obj.nome_completo}}
+                                        </td>
+                                        <td>
+                                            {{obj.cpfcnpj | cpfcnpj}}
+                                        </td>
+                                        <td>
+                                            {{obj.email}}
+                                        </td>
+                                        <td class="text-primary link" (click)="open(obj)">
+                                            Abrir
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a *ngIf="prev" href="#" (click)="getPrev()" class="previous">&laquo; Anterior</a>
+                            <a *ngIf="next" href="#" (click)="getNext()" class="next">Próximo &raquo;</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  

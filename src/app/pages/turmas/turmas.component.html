@@ -1,0 +1,90 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card card-profile">
+                    <div class="card-body">
+                        <app-erros [erros]="errosForm"></app-erros>
+                        <form  [formGroup]="form">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Nome" class="form-control" formControlName="nome">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <select matInput placeholder="Turno" class="form-control" formControlName="turno">
+                                            <option value="">Selecione...</option>
+                                            <option value="1">Manhã</option>
+                                            <option value="2">Tarde</option>
+                                            <option value="3">Noite</option>
+                                        </select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+									<mat-form-field class="example-full-width">
+										<input matInput placeholder="Curso" type="number" class="form-control" formControlName="cursos_id">
+									</mat-form-field>
+								</div>
+                            </div>
+                          
+                            <button (click)="save()" mat-raised-button type="submit" class="btn btn-danger pull-right">Cadastrar</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        ID
+                                    </th>
+                                    <th>
+                                        Nome
+                                    </th>
+                                    <th>
+                                        Turno
+                                    </th>
+                                    <th>
+                                        Aula
+                                    </th>
+                                    <th>
+                                        Abrir
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let obj of data">
+                                        <td>
+                                            {{obj.id}}
+                                        </td>
+                                        <td>
+                                            {{obj.nome}}
+                                        </td>
+                                        <td>
+                                            {{obj.turno_txt}}
+                                        </td>
+                                        <td>
+                                            {{obj.curso.nome}}
+                                        </td>
+                                        <td class="text-primary link" (click)="open(obj)">
+                                            Abrir
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a *ngIf="prev" href="#" (click)="getPrev()" class="previous">&laquo; Anterior</a>
+                            <a *ngIf="next" href="#" (click)="getNext()" class="next">Próximo &raquo;</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
