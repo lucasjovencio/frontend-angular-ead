@@ -22,4 +22,8 @@ export class CursoService {
     return this.http.post('cursos', data);
   }
 
+  select(data:any = {}){
+    return this.http.get('cursos/select',data);
+  }
+
 }

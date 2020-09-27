@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavigationExtras, Router } from '@angular/router';
+import { CursoService } from 'app/services/curso.service';
 import { TurmaService } from 'app/services/turma.service';
 
 @Component({
@@ -15,9 +16,11 @@ export class TurmasComponent implements OnInit {
   public prev:any=false;
   public next:any=false;
   public errosForm:any = [];
+  public cursos:any=[];
 
   constructor(
     private turmaService:TurmaService,
+    private cursoService:CursoService,
     private router: Router,
     private formBuilder: FormBuilder,
     ) { }
@@ -29,6 +32,7 @@ export class TurmasComponent implements OnInit {
 			nome: ['', Validators.required],
     });
     this.list();
+    this.getCursos();
   }
 
   open(obj:any){
@@ -78,6 +82,13 @@ export class TurmasComponent implements OnInit {
       if(error.status === 422){
         this.errosForm = error.error.error
       }
+    })
+  }
+
+  getCursos(){
+    this.cursoService.select().subscribe(res=>{
+      this.cursos = res.data;
+    },error=>{
     })
   }
 

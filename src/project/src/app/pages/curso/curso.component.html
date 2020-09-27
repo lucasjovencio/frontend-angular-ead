@@ -10,9 +10,8 @@
                 </a>
               </div> -->
 						<div class="card-body">
-							<h6 class="card-category text-gray">Curso / {{obj.curso.nome}}</h6>
-							<h3 class="card-title">Turma / {{obj.nome}}</h3>
-							<h6 class="card-title">Turno / {{obj.turno_txt}}</h6>
+
+							<h4 class="card-title">{{obj.nome}}</h4>
 							<p class="card-description">
 								{{obj.descricao}}
 							</p>
@@ -28,28 +27,19 @@
 			<div class="col-md-12">
 				<div class="card card-profile">
 					<div class="card-head">
-						<h2>Novo participante</h2>
+						<h2>Vincular aula</h2>
 					</div>
 					<div class="card-body">
 						<app-erros [erros]="errosForm"></app-erros>
 						<form [formGroup]="form">
 							<div class="row">
-								<div class="col-md-6">
-									<mat-form-field class="example-full-width">
-										<select matInput placeholder="Participante" class="form-control" formControlName="users_id">
-											<option value="">Selecione...</option>
-                                            <option *ngFor="let part of participantes" value="{{part.id}}">{{part.text}}</option>
+								<div class="col-md-12">
+									<div class="mat-form-field example-full-width">
+										<select matInput placeholder="Aulas" class="form-control" formControlName="aulas_id">
+											<option value="">Selecione a aula...</option>
+                                            <option *ngFor="let aula of aulas" value="{{aula.id}}">{{aula.text}}</option>
                                         </select>
-									</mat-form-field>
-								</div>
-								<div class="col-md-6">
-									<mat-form-field class="example-full-width">
-                                        <select matInput placeholder="Tipo de participante" class="form-control" formControlName="tipo">
-											<option value="">Selecione...</option>
-                                            <option value="1">Aluno</option>
-                                            <option value="2">Professor</option>
-                                        </select>
-                                    </mat-form-field>
+									</div>
 								</div>
 							</div>
 							<button (click)="save()" mat-raised-button type="submit"
@@ -69,27 +59,21 @@
 										ID
 									</th>
 									<th>
-										Participante
+										Nome
 									</th>
 									<th>
-										Tipo
-									</th>
-									<th>
-										Perfil
+										Aula
 									</th>
 								</thead>
 								<tbody>
 									<tr *ngFor="let obj of data">
 										<td>
-											{{obj.participante.id}}
+											{{obj.aula.id}}
 										</td>
 										<td>
-											{{obj.participante.nome}}
+											{{obj.aula.nome}}
 										</td>
-										<td>
-											{{obj.tipo_txt}}
-										</td>
-										<td class="text-primary link" (click)="open(obj.participante)">
+										<td class="text-primary link" (click)="open(obj.aula)">
 											Abrir
 										</td>
 									</tr>

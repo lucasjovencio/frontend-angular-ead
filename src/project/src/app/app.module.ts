@@ -10,9 +10,6 @@ import { ComponentsModule } from './components/components.module';
 
 import { AppComponent } from './app.component';
 
-import {
-  AgmCoreModule
-} from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -26,7 +23,6 @@ import { CursoComponent } from './pages/curso/curso.component';
 import { CursosComponent } from './pages/cursos/cursos.component';
 import { TurmasComponent } from './pages/turmas/turmas.component';
 import { TurmaComponent } from './pages/turma/turma.component';
-import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   imports: [
@@ -39,8 +35,7 @@ import {MatInputModule} from '@angular/material/input';
     AppRoutingModule,
     HttpClientModule,
     NgxMaskModule.forRoot(),
-    ErrosModule,
-    MatInputModule
+    ErrosModule
   ],
   declarations: [
     AppComponent,

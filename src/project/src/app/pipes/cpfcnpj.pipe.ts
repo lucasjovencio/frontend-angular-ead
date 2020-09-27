@@ -6,6 +6,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class CpfcnpjPipe implements PipeTransform {
 
   transform(value: string, ...args: unknown[]): unknown {
+    if(!value)
+      return '';
     if (value.length === 11) {
       return value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, '\$1.\$2.\$3\-\$4');
     }

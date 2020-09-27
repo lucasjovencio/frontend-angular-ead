@@ -8,24 +8,30 @@
                         <form  [formGroup]="form">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <mat-form-field class="example-full-width">
+                                    <div class="mat-form-field example-full-width">
                                       <input matInput placeholder="Nome" class="form-control" formControlName="nome">
-                                    </mat-form-field>
+                                    </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <mat-form-field class="example-full-width">
+                                    <div class="mat-form-field example-full-width">
                                         <select matInput placeholder="Turno" class="form-control" formControlName="turno">
-                                            <option value="">Selecione...</option>
+                                            <option value="">Selecione o turno...</option>
                                             <option value="1">Manhã</option>
                                             <option value="2">Tarde</option>
                                             <option value="3">Noite</option>
                                         </select>
-                                    </mat-form-field>
+                                    </div>
                                 </div>
                                 <div class="col-md-4">
-									<mat-form-field class="example-full-width">
-										<input matInput placeholder="Curso" type="number" class="form-control" formControlName="cursos_id">
-									</mat-form-field>
+									<div class="mat-form-field example-full-width">
+
+                                        
+                                        <select matInput placeholder="Selecione o Curso" class="form-control" formControlName="cursos_id">
+                                            <option value="">Selecione o curso...</option>
+                                            <option *ngFor="let curso of cursos" value="{{curso.id}}">{{curso.text}}</option>
+                                        </select>
+
+									</div>
 								</div>
                             </div>
                           
@@ -51,7 +57,7 @@
                                         Turno
                                     </th>
                                     <th>
-                                        Aula
+                                        Curso
                                     </th>
                                     <th>
                                         Abrir
